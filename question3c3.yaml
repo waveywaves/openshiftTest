@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: question3-3
+  labels:
+    app: question3-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: question3-3
+  template:
+    metadata:
+      labels:
+        app: question3-3
+    spec:
+      containers:
+      - name: question3-3
+        image: httpd
+        ports:
+        - containerPort: 80

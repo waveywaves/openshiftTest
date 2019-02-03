@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: question3-1
+spec:
+  containers:
+  - name: question3-1
+    image: alpine
+    volumeMounts:
+    - name: vol
+      mountPath: /opt/data
+  initContainers:
+  - name: vol
+    image: alpine 
+    command: [sh, -c]
+    args: ["echo 'This file has very important data' > /opt/data/important"]
+    volumeMounts:
+    - name: vol
+      mountPath: /opt/data
+  volumes:
+  - name: vol
+    emptyDir: {}
